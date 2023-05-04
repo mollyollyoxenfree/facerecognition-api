@@ -1,6 +1,6 @@
 
 const returnClarifaiRequestOptions = (imageUrl) => {
-    const PAT = '5d359db690834372a4552e29d9e394dc';
+    const PAT = process.env.PAT;
     const USER_ID = 'mollyollyoxenfree';       
     const APP_ID = 'my-first-application';
     // const MODEL_ID = 'face-detection';  
