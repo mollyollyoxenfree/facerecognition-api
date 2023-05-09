@@ -9,12 +9,31 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
-const db = knex({
-  client: 'pg',
-  connection: {
-  connectionString : process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//   connectionString : process.env.DATABASE_URL,
+//   ssl: { rejectUnauthorized: false }
+//   }
+// });
+
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
   }
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
 });
 
 //initialize new express app
