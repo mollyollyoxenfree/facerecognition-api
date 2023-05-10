@@ -62,6 +62,12 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db) });
 
 app.post('/imageurl', (req, res) => { image.handleApicall(req, res) });
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`app is running on port ${process.env.PORT}`);
-});
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
+
+// app.listen(process.env.PORT || 3000, () => {
+//     console.log(`app is running on port ${process.env.PORT}`);
+// });
