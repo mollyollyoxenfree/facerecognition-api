@@ -53,7 +53,6 @@ app.get('/', (req, res) => { res.send('successfully loaded') });
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) });
 
 app.post('/register', (req, res) => { 
-  console.log(req);
   register.handleRegister(req, res, db, saltRounds, bcrypt) });
 //dependencies injection:
 //injecting dependencies needed by handleRegister
