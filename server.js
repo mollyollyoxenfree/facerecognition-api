@@ -47,6 +47,5 @@ app.post('/imageurl', (req, res) => { image.handleApicall(req, res) });
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 8000;
-  console.log(`app is running on port ${process.env.PORT}`);
 }
 app.listen(port);
